@@ -3,16 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Pomodoro</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
   </head>
   <body>
     <h1>Pomodoro Timer</h1>
-    <div class="timer">
-      <h2 class="timer__title">Pomodoro 1</h2>
-      <p class="timer__countdown">25:00</p>
+
+    <div class="timer-container">
+      <svg class="svg_circle_loader" width="300" height="300">
+        <circle cx="150" cy="150" r="100" class="circle_background"></circle>
+        <circle
+          cx="150"
+          cy="150"
+          r="100"
+          class="circle_loader"
+          id="circle"
+        ></circle>
+        <foreignObject
+          x="70"
+          y="100"
+          width="160"
+          height="180"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        >
+          <xhtml:div>
+            <h2 class="timer__title">Pomodoro 1</h2>
+            <p class="timer__countdown">25:00</p>
+          </xhtml:div>
+        </foreignObject>
+        <text x="100" y="100" id="pct"></text>
+      </svg>
+      <!-- <div class="timer-progress-bar"></div>
+      <div class="timer">
+        <h2 class="timer__title">Pomodoro 1</h2>
+        <p class="timer__countdown">25:00</p>
+      </div> -->
     </div>
+
     <div class="controls">
       <button
         class="btn controls__btns controls__btn--start"

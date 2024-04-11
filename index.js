@@ -5,9 +5,9 @@
 //add progress bar
 
 let isReset = true;
-let pomodoroTime = 1;
-let shortBreakTime = 3;
-let longBreakTime = 1;
+let pomodoroTime = 1500;
+let shortBreakTime = 300;
+let longBreakTime = 1500;
 let currentIndex = 0;
 let intervalId;
 var audio = new Audio("sounds/beep.mp3");
@@ -21,6 +21,16 @@ const timerNames = [
   "Pomodoro 4",
   "Long Break",
 ];
+let timerCountConstant = [
+  pomodoroTime,
+  shortBreakTime,
+  pomodoroTime,
+  shortBreakTime,
+  pomodoroTime,
+  shortBreakTime,
+  pomodoroTime,
+  longBreakTime,
+];
 let timerCounts = [
   pomodoroTime,
   shortBreakTime,
@@ -33,11 +43,23 @@ let timerCounts = [
 ];
 
 //progress bar
+let circle = document.querySelector(".circle_loader");
+let circumference = 2 * Math.PI * circle.r.baseVal.value;
+circle.style.strokeDasharray = `${circumference} 1000`;
+
+function setProgress(percent) {
+  circle.style.strokeDashoffset = circumference - circumference * (1 - percent);
+  // console.log("percent= " + percent);
+  // console.log("circumference= " + circumference);
+  // console.log("set progress % " + circumference * (1 - percent));
+}
+
+// full progress so its hidden by default
+setProgress(11500);
 
 //timer
 
 function startCountdown(timeArray) {
-  let timeArrayLocal = timeArray;
   updateMainTimer(timeArray[currentIndex]);
   intervalId = setInterval(function () {
     timeArray[currentIndex]--;
@@ -46,10 +68,12 @@ function startCountdown(timeArray) {
       currentIndex++;
       document.querySelector(".timer__title").innerText =
         timerNames[currentIndex];
+
       if (currentIndex >= timeArray.length) {
         document.querySelector(".timer__title").innerText = "Timer completed!";
         document.querySelector(".timer__countdown").innerText = "0:00";
         document.querySelector(".controls__btn--start").innerText = "Start";
+        setProgress(500);
         audio.play();
         clearInterval(intervalId);
         return;
@@ -57,6 +81,13 @@ function startCountdown(timeArray) {
       startCountdown(timeArray);
     }
     updateMainTimer(timeArray[currentIndex]);
+    // console.log(timeArray[currentIndex] + " timearray");
+    // console.log(timerCountConstant[currentIndex] + " timearcount");
+    // console.log(
+    //   (1 - timerCountConstant[currentIndex] / timeArray[currentIndex]) * 100 +
+    //     " % of time passed"
+    // );
+    setProgress(timeArray[currentIndex] / timerCountConstant[currentIndex]);
   }, 1000);
 }
 
@@ -85,6 +116,7 @@ function resetEverything() {
   updateShortBreakTimer();
   updateLongBreakTimer();
   updateMainTimer(pomodoroTime);
+  setProgress(11500);
   alert("Everything is reset");
 }
 
@@ -133,6 +165,16 @@ function updateLongBreakTimer() {
 
 function resetTimerArray() {
   timerCounts = [
+    pomodoroTime,
+    shortBreakTime,
+    pomodoroTime,
+    shortBreakTime,
+    pomodoroTime,
+    shortBreakTime,
+    pomodoroTime,
+    longBreakTime,
+  ];
+  timerCountConstant = [
     pomodoroTime,
     shortBreakTime,
     pomodoroTime,

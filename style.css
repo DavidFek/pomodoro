@@ -1,59 +1,75 @@
-.settings__btns{
-    height: 25px;
-    width: 25px;
-    background-color: black;
-    color: white;
-    border-radius: 50%;
-    font-size: 1rem;
-    font-weight: 600;
-    margin: 10px;
-    
+.circle_loader {
+  fill: none;
+  stroke: black;
+  stroke-width: 10px;
+  transform-origin: center;
+  transform: rotate(-90deg);
 }
-.settings__box{
-    display: flex;
-    flex-direction: column;
-    width: 100px;
-    border-color: black;
-    border-width: 3px;
-    border-style: solid;
-    padding: 10px;
-    margin: 20px;
+.circle_background {
+  fill: none;
+  stroke: white; /* Adjust color as needed */
+  stroke-width: 9px;
 }
-.settings__btns--wrapper{
-    display: flex;
-    justify-content: center;
+
+text {
+  dominant-baseline: middle;
+  text-anchor: middle;
+  font-size: 30px;
+  font-family: Arial;
 }
-.settings{
-    display: flex;
-    justify-content: center;
-    
+
+.settings__btns {
+  height: 25px;
+  width: 25px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 10px;
 }
-p{
-    text-align: center;
+.settings__box {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  border-color: black;
+  border-width: 3px;
+  border-style: solid;
+  padding: 10px;
+  margin: 20px;
 }
-.controls{
-    display: flex;
-    justify-content: center;
+.settings__btns--wrapper {
+  display: flex;
+  justify-content: center;
 }
-body{
-    text-align: left;
+.settings {
+  display: flex;
+  justify-content: center;
 }
-.timer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    border: 2px solid black;
+p {
+  text-align: center;
 }
-h2{
-    text-align: center;
+.controls {
+  display: flex;
+  justify-content: center;
 }
-.controls__btns{
-    height: 40px;
-    width: 100px;
-    margin: 20px;
-    box-shadow: 4px 4px  rgba(0, 0, 0, 0.651);
+body {
+  text-align: left;
 }
-h1{
-    text-align: center;
+
+h2 {
+  text-align: center;
+}
+.controls__btns {
+  height: 40px;
+  width: 100px;
+  margin: 20px;
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.651);
+}
+h1 {
+  text-align: center;
+}
+.timer-container {
+  display: flex;
+  justify-content: center;
 }
